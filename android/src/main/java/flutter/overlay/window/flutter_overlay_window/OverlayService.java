@@ -367,19 +367,8 @@ public class OverlayService extends Service implements View.OnTouchListener {
             mAnimationHandler.post(() -> {
                 params.x = (2 * (params.x - mDestX)) / 3 + mDestX;
                 params.y = (2 * (params.y - mDestY)) / 3 + mDestY;
-                if (windowManager != null) {
+                if (windowManager != null && flutterView != null) {
                     windowManager.updateViewLayout(flutterView, params);
-                } else {
-                    windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
-                    if (flutterView == null) {
-                        flutterView = new FlutterView(getApplicationContext(), new FlutterTextureView(getApplicationContext()));
-                        flutterView.attachToFlutterEngine(FlutterEngineCache.getInstance().get(OverlayConstants.CACHED_TAG));
-                        flutterView.setFitsSystemWindows(true);
-                        flutterView.setFocusable(true);
-                        flutterView.setFocusableInTouchMode(true);
-                        flutterView.setBackgroundColor(Color.TRANSPARENT);
-                    }
-                    windowManager.addView(flutterView, params);
                 }
                 if (Math.abs(params.x - mDestX) < 2 && Math.abs(params.y - mDestY) < 2) {
                     TrayAnimationTimerTask.this.cancel();
