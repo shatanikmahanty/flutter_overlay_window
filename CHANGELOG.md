@@ -60,3 +60,7 @@
 ## 0.4.3
 
 - Fix overlay height bug
+
+## 0.5.0
+
+- Upgrade Gradle to 8.9.0 and add namespace to the plugin
