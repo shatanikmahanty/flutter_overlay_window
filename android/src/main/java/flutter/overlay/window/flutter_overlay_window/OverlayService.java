@@ -153,7 +153,7 @@ public class OverlayService extends Service implements View.OnTouchListener {
             params.alpha = MAXIMUM_OPACITY_ALLOWED_FOR_S_AND_HIGHER;
         }
         params.gravity = WindowSetup.gravity;
-        params.screenOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+        params.screenOrientation = ActivityInfo.SCREEN_ORIENTATION_BEHIND;
         flutterView.setOnTouchListener(this);
         windowManager.addView(flutterView, params);
         return START_STICKY;
